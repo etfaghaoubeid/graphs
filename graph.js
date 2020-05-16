@@ -9,30 +9,33 @@ class Graph {
         }
          
     }
-    addEdge(vertexOne, vertexTwo) {
-        console.log(this.adjacencyList[vertexTwo])
-        this.adjacencyList[vertexOne] =  this.adjacencyList[vertexOne].push(vertexTwo);
-        this.adjacencyList[vertexTwo] =  this.adjacencyList[vertexTwo].push(vertexOne);
-        
-    }
-    removeEdge(vertexOne, vertexTwo) {
-        if (this.adjacencyList[vertexOne]) {
-           this.adjacencyList[vertexOne] =this.adjacencyList[vertex].filter(vertex=>vertex!==vertexTwo)
-        }
-    }
     removeVertex(vertexOne) {
-        let arr = this.adjacencyList[vertexOne]
-        arr.map(el => {
-            return this.adjacencyList[el].filter(v=>v !==vertexone)
+        if(!this.adjacencyList[vertexOne])return 
+        [...this.adjacencyList[vertexOne]].map(el => {
+            
+           return this.adjacencyList[el]= [...this.adjacencyList[el]].filter(v=>v !==vertexOne)
         })
         delete this.adjacencyList[vertexOne]
 
-        while (this.adjacencyList[vertex].lenght) {
-            
-        }
+        
 
         
     }
+    addEdge(vertexOne, vertexTwo) {
+        // console.log(r)
+        this.adjacencyList[vertexOne] = [...this.adjacencyList[vertexOne], vertexTwo]
+        this.adjacencyList[vertexTwo] = [...this.adjacencyList[vertexTwo],vertexOne];
+        
+    }
+    removeEdge(vertexOne, vertexTwo) {
+        [...this.adjacencyList[vertexOne]].map(el => {
+            return [...this.adjacencyList[el]].filter(v => v !== vertexTwo)
+        });
+        [...this.adjacencyList[vertexTwo]].map(el => {
+           return  [...this.adjacencyList[el]].filter(v=>v!==vertexOne)
+        })
+    }
+   
    
 }
 
@@ -54,12 +57,26 @@ g.addEdge("B", "D")
 
 // g.addEdge("C", "B")
 g.addEdge("C", "D");
+g.addEdge("C", "E");
 
 
 // g.addEdge("D","B")
 // g.addEdge("D", "C");
 g.addEdge("D", "E")
 
+console.log(g.adjacencyList)
+
+
+g.removeVertex("C")
 
  
-console.log(g)
+console.log(g.adjacencyList)
+
+
+
+console.log("before removing Edge")
+console.log(g.adjacencyList)
+g.removeEdge("A", "B");
+console.log("after removing Edge")
+console.log(g.adjacencyList)
+
