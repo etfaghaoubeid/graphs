@@ -27,13 +27,12 @@ class Graph {
         this.adjacencyList[vertexTwo] = [...this.adjacencyList[vertexTwo],vertexOne];
         
     }
-    removeEdge(vertexOne, vertexTwo) {
+    removeEdge(vertexOne) {
         [...this.adjacencyList[vertexOne]].map(el => {
-            return [...this.adjacencyList[el]].filter(v => v !== vertexTwo)
+            console.log(el,"kkkk")
+            return this.adjacencyList[el]=[...this.adjacencyList[el]].filter(v => v !== vertexOne)
         });
-        [...this.adjacencyList[vertexTwo]].map(el => {
-           return  [...this.adjacencyList[el]].filter(v=>v!==vertexOne)
-        })
+        this.adjacencyList[vertexOne] = [...this.adjacencyList[vertexOne]].filter(v=>v == vertexOne)
     }
    
    
@@ -70,6 +69,7 @@ console.log(g.adjacencyList)
 g.removeVertex("C")
 
  
+console.log(g.adjacencyList)
 console.log(g.adjacencyList)
 
 
