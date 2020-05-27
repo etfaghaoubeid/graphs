@@ -1,13 +1,17 @@
 function binarySearch(arr, element) {
-    let midlle = arr.length % 2 ? arr.length / 2 : arr.length - 1 / 2;
     let start = 0 , end =  arr.length-1; 
-    while (midlle < end) {
-        if (element > arr[midlle]) {
+    let midlle = Math.floor((end - start)/2);
+    while (arr[midlle] !== element && start <= end) {
+        if (arr[midlle]<element) {
             start = midlle;
-            midlle = (start - end) % 2 ? (start - end) / 2 : ((start - end) - 1) / 2;
+        } else {
+            end = midlle
         }
+        midlle = Math.floor((start-end)/2)
     }
+    return arr[midlle] == element ? midlle: -1;
     
 }
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-binarySearch(numbers, 5);
+let r = binarySearch(numbers, 23);
+console.log(r)
