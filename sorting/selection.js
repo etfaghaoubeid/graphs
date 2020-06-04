@@ -1,16 +1,26 @@
-function selection(arr) {
-    let min = null
+// you look for the small element in the array  in put it in the begining 
+
+function selectionSort(arr) {
     let temp = null;
-    for (let i = 0; i < arr.length; i++){
-        for (let j = 0;j+1<=arr.length; j++){
-            if (arr[j] >= arr[j + 1]) {
-                tem = arr[j]
-               
-           }
+    for (let i = 0; i < arr.length; i++) {
+        let lowest = i;
+        for (let j = i+1; j < arr.length; j++) {
+            if (arr[lowest] > arr[j]) {
+                
+                lowest = j;
+            } else {
+                continue;
+            }
+            
         }
+        let temp = arr[i];
+        arr[i] = arr[lowest];
+        arr[lowest] = temp
+        
+
+        
     }
     return arr;
 }
-let arr = [56, 3, 45, 3, 44, 33, 6, 8];
-let r = selection(arr);
+r = selectionSort(arr)
 console.log(r)
