@@ -13,10 +13,13 @@ function selectionSort(arr) {
             }
             
         }
-        let temp = arr[i];
-        arr[i] = arr[lowest];
-        arr[lowest] = temp
-        
+        if (i !== lowest) {
+            
+            let temp = arr[i];
+            arr[i] = arr[lowest];
+            arr[lowest] = temp
+            
+        }
 
         
     }
